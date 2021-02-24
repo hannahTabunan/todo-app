@@ -12,6 +12,11 @@ use App\objects\Task;
 $db = new Database();
 $pdo = $db->getConnection();
 $task = new Task($pdo);
+
+if (in_array($_GET['sort'], ['asc', 'desc'])) {
+    $task->sort = $_GET['sort'];
+}
+
 $stmt = $task->read();
 $count = $stmt->rowCount();
 $data = [];

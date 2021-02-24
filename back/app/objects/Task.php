@@ -10,6 +10,7 @@ use PDO;
 class Task
 {
     private $pdo;
+    public $sort = 'asc';
 
     public $id;
     public $task;
@@ -31,7 +32,7 @@ class Task
 
     public function read()
     {
-        $stmt = $this->pdo->prepare("select * from tasks");
+        $stmt = $this->pdo->prepare("select * from tasks order by task {$this->sort}");
         $stmt->execute();
         return $stmt;
     }
