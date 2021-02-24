@@ -2,6 +2,7 @@
 - A simple TODO App made using PHP, JavaScript, and MySQL.
 
 Clone the repository
+
 ```
 $ git clone https://github.com/hannahTabunan/todo-app.git
 ```
