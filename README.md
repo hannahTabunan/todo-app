@@ -24,7 +24,9 @@ composer install
 ```
 
 <h1>Features</h1>
-- List
-- Create
-- Update
-- Delete
+1. List
+2. Create
+3. Update
+4. Delete
+
+Have fun!
