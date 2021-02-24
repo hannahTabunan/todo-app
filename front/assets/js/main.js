@@ -3,13 +3,18 @@ $(document).ready(function() {
 });
 
 // fetch list from API
-function fetchList() {
+function fetchList(param = '') {
+    param = param ? `?${param}` : '';
+
     $.ajax({
         type: "GET",
-        url: "../back/api/list.php",
+        url: `../back/api/list.php${param}`,
         success: function (resp) {
             if (resp.code === 200) {
-                $('.list').empty();
+                $('#pending').find('*').not('h3').remove();
+                $('#in_progress').find('*').not('h3').remove();
+                $('#completed').find('*').not('h3').remove();
+
                 resp.data.forEach(prepareCardDragDrop);
             } else {
                 alert(resp);
@@ -35,6 +40,7 @@ function prepareCard(item, index) {
     `);
 }
 
+// prepare card
 function prepareCardDragDrop(item, index) {
     let category = '#pending';
 
@@ -54,7 +60,7 @@ function prepareCardDragDrop(item, index) {
                   <label class="form-check-label task-title ${item.status === 'C' ? 'completed' : ''}">${item.task}</label>
                 </div>
                 <button type="button" class="btn btn-danger btn-sm float-right delete-task" onclick="onDelete(${item.id}, this)">
-                    Delete
+                    <i class="bi bi-x"></i>
                 </button>
             </div>
         </div>
@@ -123,6 +129,7 @@ function onCheck(id, elem) {
     })
 }
 
+// update status
 function onUpdateStatus(id, status, elem, cb) {
     $.ajax({
         type: "POST",
@@ -138,6 +145,21 @@ function onUpdateStatus(id, status, elem, cb) {
             }
         }
     })
+}
+
+function onSort(elem) {
+    let direction = $(elem).hasClass('bi-sort-alpha-down') ? 'asc' : 'desc';
+    let params = `sort=${direction}`;
+
+    if (direction === 'asc') {
+        $(elem).removeClass('bi-sort-alpha-down');
+        $(elem).addClass('bi-sort-alpha-up');
+    } else {
+        $(elem).addClass('bi-sort-alpha-down');
+        $(elem).removeClass('bi-sort-alpha-up');
+    }
+
+    fetchList(params);
 }
 
 // drag and drop
