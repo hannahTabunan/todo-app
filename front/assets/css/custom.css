@@ -1,20 +1,8 @@
-#pink {
-    color: #d03161;
-}
-
-#light-pink {
-    color: #ee8080;
-}
-
-#light-blue {
-    color: #bfd8d1;
-}
-#sky-blue {
-    color: #178a94;
-}
-#blue {
-    color: #2b374b;
-}
+/*#pink         #d03161*/
+/*#light-pink   #ee8080*/
+/*#light-blue   #bfd8d1*/
+/*#sky-blue     #178a94*/
+/*#blue         #2b374b*/
 
 html, body {
     height: 100%;
@@ -53,7 +41,10 @@ hr {
     background-color: #625071;
     color: #ffffff;
     margin-bottom: 15px !important;
-    border-style: dashed;
+    border-style: solid;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 .task-title {
@@ -62,4 +53,18 @@ hr {
 
 .completed {
     text-decoration: line-through;
+}
+
+.hold {
+    border: solid 5px #ffffff;
+}
+
+.category {
+    border: 2px solid #625071;
+    height: 100%;
+}
+
+.hovered {
+    background: #9180a0;
+    border-style: dashed;
 }
