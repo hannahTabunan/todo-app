@@ -40,11 +40,9 @@ hr {
 .card {
     background-color: #625071;
     color: #ffffff;
-    margin-bottom: 15px !important;
     border-style: solid;
     cursor: pointer;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin: 15px 15px 15px 15px;
 }
 
 .task-title {
@@ -67,4 +65,8 @@ hr {
 .hovered {
     background: #9180a0;
     border-style: dashed;
+}
+
+.sort-button {
+    cursor: pointer;
 }
