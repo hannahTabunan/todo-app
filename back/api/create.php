@@ -11,6 +11,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/todo-app/vendor/autoload.php";
 
 use App\config\Database;
 use App\objects\Task;
+use App\config\Helper;
 
 $db = new Database();
 $pdo = $db->getConnection();
@@ -26,7 +27,7 @@ if (empty($_POST['task'])) {
     exit;
 }
 
-$task->task = $_POST['task'];
+$task->task = Helper::sanitize($_POST['task']);
 
 if ($task->create()) {
     // prepare data

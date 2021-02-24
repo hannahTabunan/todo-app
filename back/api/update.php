@@ -8,6 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/todo-app/vendor/autoload.php";
 
 use App\config\Database;
 use App\objects\Task;
+use App\config\Helper;
 
 $db = new Database();
 $pdo = $db->getConnection();
@@ -67,8 +68,8 @@ if (!in_array($_POST['status'], $task::getStatuses())) {
     exit;
 }
 
-$task->task = $_POST['task'] ? $_POST['task'] : $task->task;
-$task->status = $_POST['status'] ? $_POST['status'] : $task->status;
+$task->task = $_POST['task'] ? Helper::sanitize($_POST['task']) : $task->task;
+$task->status = $_POST['status'] ? Helper::sanitize($_POST['status']) : $task->status;
 $task->date_updated = date('Y-m-d H:i:s');
 
 $data = [];
