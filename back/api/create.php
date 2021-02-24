@@ -2,6 +2,7 @@
 /**
  *  * Created by hannah on 2/23/2021.
  */
+ini_set('display_errors', 0);
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
@@ -18,10 +19,11 @@ $data = [];
 
 // validation
 if (empty($_POST['task'])) {
-    return json_encode([
+    echo json_encode([
        'code'=>400,
        'message'=>"Task is required"
     ]);
+    exit;
 }
 
 $task->task = $_POST['task'];
