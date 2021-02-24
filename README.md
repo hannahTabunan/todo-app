@@ -17,11 +17,12 @@ We recommend using XAMPP.
 4. Open http://todo-app/front/index.html in your browser
 
 <h1>Installation</h1>
-Create database from the todo_app.sql file, then execute these commands:
-
+1. Create database from the todo_app.sql file
+2. Execute command:
 ```
 composer install
 ```
+3. You are all set! Open http://todo-app/front/index.html in your browser
 
 <h1>Features</h1>
 1. List
